@@ -1,13 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>JavaScript Lab</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Map Method Lab</title>
+    <link rel="stylesheet" href="styles.css"> 
 </head>
 <body>
-  hello
-  <script type="text/javascript" src="index.js"></script>
+    <header>
+        <h1>JavaScript Map Method Lab</h1>
+    </header>
+    <main>
+        <section>
+            <h2>Tutorials in Title Case</h2>
+            <ul id="tutorialList"></ul> 
+        </section>
+    </main>
+    <script>
+        const tutorials = [
+            "what does the this keyword mean?",
+            "What is the Constructor OO pattern?",
+            "implementing Blockchain Web API",
+            "The Test Driven Development Workflow",
+            "What is NaN and how Can we Check for it",
+            "What is the difference between stopPropagation and preventDefault?",
+            "Immutable State and Pure Functions",
+            "what is the difference between == and ===?",
+            "what is the difference between event capturing and bubbling?",
+            "what is JSONP?",
+        ];
+
+        const capitalizeFirstLetter = (word) => {
+            return word.charAt(0).toUpperCase() + word.slice(1).toLowerCase();
+        };
+
+        const titleCased = () => {
+            return tutorials.map(tutorial => {
+                return tutorial.split(' ') 
+                    .map(capitalizeFirstLetter) 
+                    .join(' '); 
+            });
+        };
+
+        const displayTutorials = () => {
+            const tutorialList = document.getElementById('tutorialList');
+            const titleCasedTutorials = titleCased(); 
+            titleCasedTutorials.forEach(tutorial => {
+                const listItem = document.createElement('li'); 
+                listItem.textContent = tutorial; 
+                tutorialList.appendChild(listItem); 
+            });
+        };
+
+        displayTutorials(); 
+    </script>
 </body>
 </html>
